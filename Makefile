@@ -1,4 +1,4 @@
-NAME = adriagalin/jenkins-jnlp-slave
+NAME = thethingsio/jenkins-jnlp-slave
 VERSION ?= latest
 
 .PHONY: all build tag_latest release

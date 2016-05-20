@@ -17,6 +17,16 @@ RUN curl -sSL -o /tmp/docker-${DOCKER_VERSION}.tgz https://get.docker.com/builds
 RUN curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-Linux-x86_64 > /usr/local/bin/docker-compose \
     && chmod +x /usr/local/bin/docker-compose
 
+# NodeJS
+RUN curl -sL https://deb.nodesource.com/setup_0.12 | bash - \
+    && apt-get install -y nodejs \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Bower & Grunt
+RUN npm install -g bower grunt-cli \
+    && echo '{ "allow_root": true }' > /root/.bowerrc \
+    && npm set cache /data/.npm --global
+
 # curl -L https://github.com/docker/compose/releases/download/1.7.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose \ && chmod +x /usr/local/bin/docker-compose
 
 # With newest docker

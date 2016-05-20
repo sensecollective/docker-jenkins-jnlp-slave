@@ -1,13 +1,13 @@
 Jenkins JNLP slave Docker image with Docker binary
 ==================================================
 
-[![](https://imagelayers.io/badge/adriagalin/jenkins-jnlp-slave:latest.svg)](https://imagelayers.io/?images=adriagalin/jenkins-jnlp-slave:latest)
+[![](https://imagelayers.io/badge/thethingsio/jenkins-jnlp-slave:latest.svg)](https://imagelayers.io/?images=thethingsio/jenkins-jnlp-slave:latest)
 
 A [Jenkins](https://jenkins-ci.org) slave using JNLP to establish connection with docker binaries.
 
 See [Jenkins Distributed builds](https://wiki.jenkins-ci.org/display/JENKINS/Distributed+builds) for more info.
 
-[![Docker build](http://dockeri.co/image/adriagalin/jenkins-jnlp-slave)](https://registry.hub.docker.com/u/adriagalin/jenkins-jnlp-slave/)
+[![Docker build](http://dockeri.co/image/thethingsio/jenkins-jnlp-slave)](https://registry.hub.docker.com/u/thethingsio/jenkins-jnlp-slave/)
 
 Contains:
 
@@ -15,6 +15,9 @@ Contains:
 -	Make
 -	Docker
 -	Docker compose
+-	Node 0.12.14
+-	Bower
+-	Grunt
 
 Running
 -------
@@ -22,13 +25,13 @@ Running
 To run a Docker container
 
 ```
-docker run adriagalin/jenkins-jnlp-slave -url http://jenkins-server:port <secret> <slave name>
+docker run thethingsio/jenkins-jnlp-slave -url http://jenkins-server:port <secret> <slave name>
 ```
 
 Or create your own deployable docker container:
 
 ```Dockerfile
-FROM adriagalin/jenkins-jnlp-slave
+FROM thethingsio/jenkins-jnlp-slave
 
 ADD MyProgram /MyProgram
 
@@ -46,7 +49,9 @@ optional environment variables:
 -	`JENKINS_URL`: url for the Jenkins server, can be used as a replacement to `-url` option, or to set alternate jenkins URL
 -	`JENKINS_TUNNEL`: (`HOST:PORT`) connect to this slave host and port instead of Jenkins server, assuming this one do route TCP traffic to Jenkins master. Useful when when Jenkins runs behind a load balancer, reverse proxy, etc.
 
-**Based on [`jenkinsci/jnlp-slave`](https://hub.docker.com/r/jenkinsci/jnlp-slave/)**
+**Based on [`adriagalin/jenkins-jnlp-slave`](https://hub.docker.com/r/adriagalin/jenkins-jnlp-slave/)**
+
+**Based on [`node`](https://hub.docker.com/_/node/)**
 
 License
 -------
