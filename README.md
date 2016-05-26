@@ -18,6 +18,7 @@ Contains:
 -	Node 0.12.14
 -	Bower
 -	Grunt
+-	Kubectl
 
 Running
 -------
