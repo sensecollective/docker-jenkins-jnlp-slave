@@ -19,6 +19,7 @@ Contains:
 -	Bower
 -	Grunt
 -	Kubectl
+-	Rsync
 
 Running
 -------
