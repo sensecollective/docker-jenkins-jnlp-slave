@@ -22,7 +22,7 @@ RUN curl -L https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_
     && chmod +x /usr/local/bin/kubectl
 
 # NodeJS
-RUN curl -sL https://deb.nodesource.com/setup_0.12 | bash - \
+RUN curl -sL https://deb.nodesource.com/setup_4.x | bash - \
     && apt-get install -y nodejs \
     && rm -rf /var/lib/apt/lists/*
 
