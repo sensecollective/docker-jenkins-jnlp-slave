@@ -1,19 +1,23 @@
 FROM jenkinsci/jnlp-slave
 MAINTAINER Adria Galin <@adriagalin>
 
-ENV DOCKER_VERSION=1.10.3 DOCKER_COMPOSE_VERSION=1.7.0 KUBECTL_VERSION=v1.3.0
+ENV DOCKER_VERSION=17.04.0-ce DOCKER_COMPOSE_VERSION=1.14.0 KUBECTL_VERSION=v1.6.6
 
 USER root
+
+RUN echo "deb http://www.apache.org/dist/cassandra/debian 311x main" | tee -a /etc/apt/sources.list.d/cassandra.sources.list \
+		&& curl https://www.apache.org/dist/cassandra/KEYS | apt-key add -
+
 RUN apt-get update -qq && apt-get install -y -qq --no-install-recommends \
     make \
     rsync \
+    cassandra-tools \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN curl -sSL -o /tmp/docker-${DOCKER_VERSION}.tgz https://get.docker.com/builds/Linux/x86_64/docker-${DOCKER_VERSION}.tgz \
-    && tar xzf /tmp/docker-${DOCKER_VERSION}.tgz -C / \
-    && rm /tmp/docker-${DOCKER_VERSION}.tgz \
-    && chmod -R +x /usr/local/bin/docker
+RUN curl -fsSLO https://get.docker.com/builds/Linux/x86_64/docker-${DOCKER_VERSION}.tgz \
+		&& tar --strip-components=1 -xvzf docker-${DOCKER_VERSION}.tgz -C /usr/local/bin \
+		&& chmod -R +x /usr/local/bin/docker
 
 RUN curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-Linux-x86_64 -o /usr/local/bin/docker-compose \
     && chmod +x /usr/local/bin/docker-compose

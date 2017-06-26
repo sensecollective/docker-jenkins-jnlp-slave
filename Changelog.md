@@ -1,3 +1,11 @@
+1.8 (release date: 2017-06-26)
+------------------------------
+
+-	Update docker version to 17.04.0-ce
+-	Update docker compose version to 1.14.0
+-	Update kubectl version to 1.6.6
+- Add cassandra 311x deb repo
+
 1.7 (release date: 2016-10-04)
 ------------------------------
 

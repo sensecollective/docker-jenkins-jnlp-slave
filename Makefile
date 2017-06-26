@@ -1,3 +1,4 @@
+CURRENT_DIRECTORY := $(shell pwd)
 NAME = thethingsio/jenkins-jnlp-slave
 VERSION ?= latest
 
